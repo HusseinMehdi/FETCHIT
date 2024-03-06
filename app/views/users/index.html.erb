@@ -1,0 +1,29 @@
+<%= render 'header' %>
+<div class="table-responsive custom-table-container mt-5" style="max-width: 80%; margin: auto;">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Vorname</th>
+        <th scope="col">Nachname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Aktion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.firstName %></td>
+          <td><%= user.lastName %></td>
+          <td><%= user.email %></td>
+          <td>
+            <%= form_with url: user_path(user), method: :delete do %>
+                <%= submit_tag 'Löschen', data: { confirm: 'Sind Sie sicher?' }, class: 'btn btn-danger' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
