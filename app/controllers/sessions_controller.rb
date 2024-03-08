@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_login, only: [:report]
-  
 
   def new
 
@@ -10,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id  
-      redirect_to report_path
+      redirect_to new_report_path
     else
       flash.now[:alert] = 'Ungültige E-Mail/Passwort'
       render 'new', status: :unprocessable_entity

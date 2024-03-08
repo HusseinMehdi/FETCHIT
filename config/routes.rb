@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'report', to: 'sessions#report', as: 'report'
-
   resources :users, only: [:new, :create, :edit, :update, :index, :destroy] 
 
 
 
+  resources :reports, only: [:new, :create]
+
+  
 end

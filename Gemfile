@@ -52,6 +52,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.1'
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

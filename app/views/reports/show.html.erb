@@ -1,0 +1,27 @@
+<!-- app/views/reports/show.html.erb -->
+<h1>Report Results</h1>
+
+<% if @results.empty? %>
+  <p>No records found.</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Shipping Date</th>
+        <th>Customer Account Nr</th>
+        <th>Customer Order Nr</th>
+        <!-- Add other headers -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @results.each do |report| %>
+        <tr>
+          <td><%= report['ShippingDate'] %></td>
+          <td><%= report['CustomerAccountNr'] %></td>
+          <td><%= report['CustomerOrderNr'] %></td>
+          <!-- Display other fields as needed -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

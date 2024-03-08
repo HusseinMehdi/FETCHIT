@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_admin, only: [:new, :create, :destroy]
-  before_action :set_user, only: [:edit ,:update, :change_password]
+  before_action :require_login, only: [:edit, :update]
+  before_action :require_admin, only: [:new, :create, :destroy, :index]
+  before_action :set_user, only: [:edit ,:update]
+  before_action :correct_user, only: [:edit, :update]
   
   def new
     @user = User.new
@@ -59,7 +61,7 @@ class UsersController < ApplicationController
 
     # Handle general updates (excluding password changes)
     if @user.update(user_params.except(:password, :password_confirmation))
-      redirect_to report_path, notice: 'Benutzer erfolgreich aktualisiert'
+      redirect_to new_report_path, notice: 'Benutzer erfolgreich aktualisiert'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -75,6 +77,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def correct_user
+    unless current_user == @user || current_user.admin?
+      flash[:alert] = "Du bist nicht berechtigt, diese Aktion auszuführen."
+      redirect_to(root_url)
+    end
   end
 
   def user_params

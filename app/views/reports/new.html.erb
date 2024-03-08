@@ -1,0 +1,19 @@
+<%= render 'users/header' %>
+
+<body>
+<%= form_with url: reports_path, method: :post do |form| %>
+    <div>
+        <%= form.label :start_date, 'Start Date' %>
+        <%= form.date_field :start_date %>
+    </div>
+    <div>
+        <%= form.label :end_date, 'End Date' %>
+        <%= form.date_field :end_date %>
+    </div>
+
+
+
+
+    <%= form.submit "Generate Report" %>
+    <% end %>
+</body>
