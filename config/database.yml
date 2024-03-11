@@ -8,12 +8,12 @@ development:
     adapter: sqlite3
     database: db/development.sqlite3
   
-  sendit:
-    database: SendIT
-    username: sa
-    password: prologis1$
-    adapter: sqlserver
-    host: 192.168.8.52
+sendit:
+  database: SendIT
+  username: senditro
+  password: senditro123
+  adapter: sqlserver
+  host: 192.168.8.53
 
 test:
   <<: *default

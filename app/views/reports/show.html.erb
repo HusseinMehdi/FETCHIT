@@ -1,25 +1,26 @@
-<!-- app/views/reports/show.html.erb -->
-<h1>Report Results</h1>
+<%= render 'users/header' %>
 
-<% if @results.empty? %>
-  <p>No records found.</p>
-<% else %>
-  <table>
+<div class="table-responsive custom-table-container mt-5" style="max-width: 80%; margin: auto;">
+  <table class="table table-striped table-bordered">
+    <% if @results.blank? %>
+      <p>No records found.</p>
+    <% else %>
     <thead>
       <tr>
         <th>Shipping Date</th>
         <th>Customer Account Nr</th>
         <th>Customer Order Nr</th>
-        <!-- Add other headers -->
+        <th>Order Nr</th>
       </tr>
     </thead>
+
     <tbody>
-      <% @results.each do |report| %>
+      <% @results.each do |result| %>
         <tr>
-          <td><%= report['ShippingDate'] %></td>
-          <td><%= report['CustomerAccountNr'] %></td>
-          <td><%= report['CustomerOrderNr'] %></td>
-          <!-- Display other fields as needed -->
+          <td><%= result['ShippingDate'] %></td>
+          <td><%= result['CustomerAccountNr'] %></td>
+          <td><%= result['CustomerOrderNr'] %></td>
+          <td><%= result['OrderNr'] %></td>
         </tr>
       <% end %>
     </tbody>

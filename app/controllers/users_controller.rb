@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update]
-  before_action :require_admin, only: [:new, :create, :destroy, :index]
+  before_action :ensure_admin, only: [:new, :create, :destroy, :index]
   before_action :set_user, only: [:edit ,:update]
   before_action :correct_user, only: [:edit, :update]
   
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     Rails.logger.debug "Received params: #{params.inspect}"
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, notice: 'Benutzer erfolgreich registriert.'
+      redirect_to new_report_path, notice: 'Benutzer erfolgreich registriert.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,13 +32,7 @@ class UsersController < ApplicationController
       flash[:alert] = 'Falsches Passwort'
       return render :edit, status: :unprocessable_entity
     end
-
-    #Verify current password for any update    
-    unless @user.authenticate(params[:user][:current_password])
-      flash[:alert] = 'Falsches Passwort'
-      return render :edit, status: :unprocessable_entity
-    end
-     
+         
     # Handle password change
     if params[:user][:password].present?
       # Ensure password confirmation matches new password

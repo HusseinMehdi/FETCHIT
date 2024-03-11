@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :edit, :update, :index, :destroy] 
 
-
-
-  resources :reports, only: [:new, :create]
+  resources :reports, only: [:new] do
+    get 'results', on: :collection, to: 'reports#show'
+  end
+  
 
   
 end
