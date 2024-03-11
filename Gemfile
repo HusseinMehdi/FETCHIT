@@ -54,6 +54,9 @@ gem 'cssbundling-rails'
 gem 'jsbundling-rails'
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
+gem 'kaminari'
+gem 'kaminari-bootstrap'
+
 
 
 group :development, :test do

@@ -39,7 +39,9 @@ class ReportsController < ApplicationController
           ORDER BY
             ShippingDate ASC
         SQL
-        @results = Report.connection.exec_query(ActiveRecord::Base.sanitize_sql_array([sql_query, formatted_start_date, formatted_end_date]))
+
+        all_results = Report.connection.exec_query(ActiveRecord::Base.sanitize_sql_array([sql_query, formatted_start_date, formatted_end_date]))
+        @results = Kaminari.paginate_array(all_results.to_a).page(params[:page]).per(50)
     end
 end
   

@@ -19,14 +19,22 @@
     <tbody>
       <% @results.each do |result| %>
         <tr>
-          <td><%= result['ShippingDate'] %></td>
+          <td><%= result['ShippingDate'].strftime('%d-%m-%Y') %></td>
           <td><%= result['CustomerAccountNr'] %></td>
           <td><%= result['CustomerOrderNr'] %></td>
           <td><%= result['OrderNr'] %></td>
-          <td><%= result['InvoiceNr']%></td>
-          <td><%= result['DeliveryNoteNr']%></td>
+          <td><%= result['InvoiceNr'] %></td>
+          <td><%= result['DeliveryNoteNr'] %></td>
         </tr>
       <% end %>
     </tbody>
+    <% end %>
   </table>
-<% end %>
+
+  <% if @results.present? %>
+    <div class="d-flex justify-content-center" style="margin-top: 20px;">
+      <%= paginate @results %>
+    </div>
+  <% end %>
+</div>
+
