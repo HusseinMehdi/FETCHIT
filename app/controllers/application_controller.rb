@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
   
   def admin?
-    current_user&.email == 'admin@moguntia.com'
+    current_user&.email == ENV['ADMIN_EMAIL']
   end
   
   # Ensures a user is logged in
