@@ -19,7 +19,9 @@
           <td><%= user.email %></td>
           <td>
             <%= form_with url: user_path(user), method: :delete do %>
-                <%= submit_tag 'Löschen', data: { confirm: 'Sind Sie sicher?' }, class: 'btn btn-danger' %>
+                <% if user.email != ENV['ADMIN_EMAIL']%>
+                  <%= submit_tag 'Löschen', data: { confirm: 'Sind Sie sicher?' }, class: 'btn btn-danger' %>
+                <% end%>
             <% end %>
           </td>
         </tr>
