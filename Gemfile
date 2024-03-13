@@ -52,10 +52,18 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 5.1'
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
+
+# Connect to external database
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
+
+# Pagination
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+
+# Export tables as Excel 
+gem 'axlsx'
+gem 'axlsx_rails'
 
 
 

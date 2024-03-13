@@ -31,6 +31,14 @@
     <% end %>
   </table>
 
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <% if @results.blank? == false %>
+        <%= link_to 'Excel exportieren', export_reports_path(format: :xlsx, start_date: params[:start_date], end_date: params[:end_date]),  class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+
+
   <% if @results.present? %>
     <div class="d-flex justify-content-center" style="margin-top: 20px;">
       <%= paginate @results %>

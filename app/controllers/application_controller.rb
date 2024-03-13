@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # Ensures a user is logged in
   def require_login
     unless current_user
-      flash[:alert] = "Du musst angemeldet sein, um auf diese Seite zugreifen zu können."
+      flash[:alert] = "Du musst angemeldet sein, um auf diese Seite zugreifen zu können"
       redirect_to login_path
     end
   end
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   # Specific checks for different roles could be defined here
   def ensure_admin
     unless admin?
-      flash[:alert] = "Nur der Administrator hat Zugriff auf diesen Bereich."
+      flash[:alert] = "Nur der Administrator hat Zugriff auf diesen Bereich"
       redirect_to root_path # or wherever appropriate
     end
   end
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def check_session_timeout
     if current_user && session[:expires_at] && Time.current > session[:expires_at]
       reset_session
-      flash[:alert] = "Your session has expired. Please log in again."
+      flash[:alert] = "Deine Sitzung ist abgelaufen. Bitte melden Sie sich erneut an"
       redirect_to root_path 
     else
       session[:expires_at] = 30.minutes.from_now

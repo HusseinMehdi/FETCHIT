@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Results") do |sheet|
+  sheet.add_row ["Shipping Date", "Customer Account Nr", "Customer Order Nr", "Order Nr", "Invoice Nr", "Delivery Note Nr"]
+  @results.each do |result|
+    sheet.add_row [
+      result['ShippingDate'].strftime('%d-%m-%Y'), 
+      result['CustomerAccountNr'], 
+      result['CustomerOrderNr'], 
+      result['OrderNr'], 
+      result['InvoiceNr'], 
+      result['DeliveryNoteNr']
+    ]
+  end
+end
