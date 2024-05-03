@@ -3,13 +3,13 @@
 <div class="table-responsive custom-table-container mt-5" style="max-width: 80%; margin: auto;">
     <%= form_with(model: @user, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
     <div class="form-group mb-3">
-        <%= form.label :firstName, "Vorname", class: 'input-group-text' %>
-        <%= form.text_field :firstName, id: :user_firstName, class: 'form-control', 'aria-label': "Vorname", 'aria-describedby': "inputGroup-sizing-lg" %>
+        <%= form.label :firstName, "First name", class: 'input-group-text' %>
+        <%= form.text_field :firstName, id: :user_firstName, class: 'form-control', 'aria-label': "First name", 'aria-describedby': "inputGroup-sizing-lg" %>
     </div>
 
     <div class="form-group mb-3">
-        <%= form.label :lastName, "Nachname", class: 'input-group-text' %>
-        <%= form.text_field :lastName, id: :user_lastName, class: 'form-control', 'aria-label': "Nachname", 'aria-describedby': "inputGroup-sizing-lg" %>
+        <%= form.label :lastName, "Last name", class: 'input-group-text' %>
+        <%= form.text_field :lastName, id: :user_lastName, class: 'form-control', 'aria-label': "Last name", 'aria-describedby': "inputGroup-sizing-lg" %>
     </div>
 
     <div class="form-group mb-3">
@@ -18,8 +18,8 @@
     </div>
 
     <div class="form-group mb-3">
-        <%= form.label :current_password, "Aktuelles Passwort", class: 'input-group-text' %>
-        <%= form.password_field :current_password, id: :user_current_password, class: 'form-control', 'aria-label': "Aktuelles Passwort", 'aria-describedby': "inputGroup-sizing-lg" %>
+        <%= form.label :current_password, "Current Password", class: 'input-group-text' %>
+        <%= form.password_field :current_password, id: :user_current_password, class: 'form-control', 'aria-label': "Current Password", 'aria-describedby': "inputGroup-sizing-lg" %>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -31,22 +31,22 @@
     <div class="alert alert-warning d-flex align-items-center alert-sm" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="16" height="16" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
         <div>
-        Passwort und Passwort Bestätigung leer lassen, wenn Sie das Passwort nicht ändern möchten!!!
+        Leave password and password confirmation blank if you do not want to change the password!!!
         </div>
     </div>
 
     <div class="form-group mb-3">
-        <%= form.label :password, "Passwort", class: 'input-group-text' %>
-        <%= form.password_field :password, id: :user_password, class: 'form-control', 'aria-label': "Passwort", 'aria-describedby': "inputGroup-sizing-lg" %>
+        <%= form.label :password, "Password", class: 'input-group-text' %>
+        <%= form.password_field :password, id: :user_password, class: 'form-control', 'aria-label': "Password", 'aria-describedby': "inputGroup-sizing-lg" %>
     </div>
 
     <div class="form-group mb-3">
-        <%= form.label :password_confirmation, "Passwort Bestätigung", class: 'input-group-text' %>
-        <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: 'form-control', 'aria-label': "Passwort Bestätigung", 'aria-describedby': "inputGroup-sizing-lg" %>
+        <%= form.label :password_confirmation, "Confirm password", class: 'input-group-text' %>
+        <%= form.password_field :password_confirmation, id: :user_password_confirmation, class: 'form-control', 'aria-label': "Confirm password", 'aria-describedby': "inputGroup-sizing-lg" %>
     </div>
     
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <%= form.submit "Benutzer aktualisieren", class: "btn btn-success" %>
+        <%= form.submit "Update", class: "btn btn-success" %>
     </div>
 
     <% end %>
