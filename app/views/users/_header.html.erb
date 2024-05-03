@@ -26,12 +26,12 @@
                     <% end %>
 
                     <li class="nav-item">
-                        <%= link_to 'Meine Daten', edit_user_path(current_user), class: "nav-link" %>
+                        <%= link_to 'My Data', edit_user_path(current_user), class: "nav-link" %>
                     </li>
                    
                     <li class="nav-item">
                         <%= form_with url: logout_path, method: :delete, local: true do |form| %>
-                        <%= form.submit "Ausloggen", class: "nav-link btn btn-link" %>
+                        <%= form.submit "Logout", class: "nav-link btn btn-link" %>
                         <% end %>
                     </li>
                 </ul>

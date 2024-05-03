@@ -63,7 +63,7 @@ gem 'kaminari-bootstrap'
 
 # Export tables as Excel 
 gem 'axlsx'
-gem 'axlsx_rails'
+gem 'caxlsx_rails'
 
 
 
