@@ -1,25 +1,26 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  username: fetchit
+  password: <%= ENV['FETCHIT_DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
 development:
-  primary:
-    adapter: sqlite3
-    database: db/development.sqlite3
-  
-sendit:
-  database: <%= ENV['SENDIT_DATABASE'] %>
-  username: <%= ENV['SENDIT_USERNAME'] %>
-  password: <%= ENV['SENDIT_PASSWORD'] %>
-  adapter: sqlserver
-  host: <%= ENV['SENDIT_HOST'] %>
-
+  <<: *default
+  database: fetchit_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: fetchit_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: fetchit_production
+
+sendit:
+  adapter: sqlserver
+  database: <%= ENV['SENDIT_DATABASE'] %>
+  username: <%= ENV['SENDIT_USERNAME'] %>
+  password: <%= ENV['SENDIT_PASSWORD'] %>
+  host: <%= ENV['SENDIT_HOST'] %>
