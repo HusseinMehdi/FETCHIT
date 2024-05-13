@@ -1,9 +1,9 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.18.1"
+lock "~> 3.16.0"
 
-set :application, "FETCHIT"
+set :application, "fetchit"
 set :repo_url, "git@github.com:HusseinMehdi/FETCHIT.git"
-set :branch, 'main'
+set :branch, 'dev'
 # Deploy to the user's home directory
 set :deploy_to, "/home/fetchit/#{fetch :application}"
 
