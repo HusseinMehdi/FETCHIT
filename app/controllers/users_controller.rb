@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     Rails.logger.debug "Received params: #{params.inspect}"
     @user = User.new(user_params)
     if @user.save
-      redirect_to new_report_path, notice: 'Benutzer erfolgreich registriert.'
+      redirect_to new_report_path, notice: 'User registered successfully.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update  
     #Verify current password for any update
     unless @user.authenticate(params[:user][:current_password])
-      flash[:alert] = 'Falsches Passwort'
+      flash[:alert] = 'Wrong password'
       return render :edit, status: :unprocessable_entity
     end
          
@@ -37,14 +37,14 @@ class UsersController < ApplicationController
     if params[:user][:password].present?
       # Ensure password confirmation matches new password
       unless params[:user][:password] == params[:user][:password_confirmation]
-        flash.now[:alert] = 'Passwortbestätigung stimmt nicht überein.'
+        flash.now[:alert] = 'Password confirmation does not match.'
         return render :edit, status: :unprocessable_entity
       end
 
       if @user.update(user_params)
         # Password change was successful, log out the user
         reset_session # Clear the session
-        redirect_to login_path, notice: 'Ihr Passwort wurde geändert. Bitte melden Sie sich erneut mit Ihrem neuen Passwort an'
+        redirect_to login_path, notice: 'Your password has been changed. Please log in again with your new password.'
         return
       else
         # Handle the case where password update fails due to other validation issues
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     # Handle general updates (excluding password changes)
     if @user.update(user_params.except(:password, :password_confirmation))
-      redirect_to new_report_path, notice: 'Benutzer erfolgreich aktualisiert'
+      redirect_to new_report_path, notice: 'User updated successfully.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'Benutzer wurde erfolgreich gelöscht'
+    redirect_to users_path, notice: 'User was successfully deleted.'
   end
   
   private
