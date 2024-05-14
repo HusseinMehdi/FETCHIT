@@ -60,4 +60,4 @@
 #     # password: "please use keys"
 #   }
 
-server '192.168.8.182', user: "FETCHIT", roles: %w{app db web}
+server '192.168.8.182', user: "fetchit", roles: %w{app db web}
