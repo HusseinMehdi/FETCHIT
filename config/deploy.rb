@@ -6,7 +6,10 @@ set :repo_url, "git@github.com:HusseinMehdi/FETCHIT.git"
 set :branch, 'main'
 # Deploy to the user's home directory
 set :deploy_to, "/home/fetchit/#{fetch :application}"
-
+set :default_env, {
+  'FREETDS_INCLUDE_DIR' => '/usr/include',
+  'FREETDS_LIB_DIR' => '/usr/lib'
+}
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
 # Only keep the last 5 releases to save disk space
