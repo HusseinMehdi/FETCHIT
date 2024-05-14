@@ -17,6 +17,9 @@ test:
 production:
   <<: *default
   database: fetchit_production
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
 
 sendit:
   adapter: sqlserver

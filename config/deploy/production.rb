@@ -61,3 +61,8 @@
 #   }
 
 server '192.168.8.182', user: "fetchit", roles: %w{app db web}
+
+set :stage, :production
+set :branch, "dev"
+
+set :rails_env, :production
